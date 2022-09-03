@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "$$$",
+    "$$$",
+    "$$$"
+  ],
+  "key": {
+    "$": {
+      "item": "shadowmod:shadow_ingot"
+    }
+  },
+  "result": {
+    "item": "shadowmod:shadow_block"
+  }
+}

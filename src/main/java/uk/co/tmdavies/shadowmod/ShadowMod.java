@@ -9,7 +9,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+import uk.co.tmdavies.shadowmod.blocks.ModBlocks;
 import uk.co.tmdavies.shadowmod.utils.ModConstants;
+import uk.co.tmdavies.shadowmod.items.ModItems;
 
 @Mod(ModConstants.MOD_ID)
 public class ShadowMod {
@@ -19,6 +21,10 @@ public class ShadowMod {
     public ShadowMod() {
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "shadowmod:shadow_ore",
+    "shadowmod:deepslate_shadow_ore",
+    "shadowmod:shadow_block"
+  ]
+}

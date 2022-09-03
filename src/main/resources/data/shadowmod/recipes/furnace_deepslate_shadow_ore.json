@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "shadowmod:deepslate_shadow_ore"
+  },
+  "result": "shadowmod:shadow_ingot",
+  "experience": 20,
+  "cookingtime": 600
+}

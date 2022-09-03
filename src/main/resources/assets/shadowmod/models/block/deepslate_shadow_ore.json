@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "shadowmod:block/deepslate_shadow_ore"
+  }
+}

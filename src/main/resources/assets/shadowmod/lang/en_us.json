@@ -1,0 +1,9 @@
+{
+  "itemGroup.shadowmod": "ShadowMod",
+  "item.shadowmod.shadow_ingot": "§7Shadow Ingot",
+  "item.shadowmod.shadow_sword": "§7Shadow Sword",
+  "item.shadowmod.shadow_pickaxe": "§7Shadow Pickaxe",
+  "block.shadowmod.shadow_ore": "§7Shadow Ore",
+  "block.shadowmod.deepslate_shadow_ore": "§7Deepslate Shadow Ore",
+  "block.shadowmod.shadow_block": "§7Shadow Block"
+}
