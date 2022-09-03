@@ -9,7 +9,10 @@ import java.util.function.Supplier;
 
 public enum ShadowTier implements Tier {
 
-    SHADOW(5, 5052, 8.0F, 5.0F, 15, () -> {
+    SHADOW_SWORD(5, 5052, 1.0F, 9.0F, 15, () -> {
+        return Ingredient.of(ModItems.SHADOW_INGOT.get());
+    }),
+    SHADOW_PICKAXE(5, 5052, 1.0F, 6F, 15, () -> {
         return Ingredient.of(ModItems.SHADOW_INGOT.get());
     });
 
@@ -24,8 +27,8 @@ public enum ShadowTier implements Tier {
 
         this.level = level;
         this.uses = uses;
-        this.speed = speed;
-        this.damage = damage;
+        this.speed = speed-4; // Makes actual attribute 0. ((4-4)+speed)
+        this.damage = damage; // (1+damage)
         this.enchantmentValue = enchantmentValue;
         this.repairIngredient = new LazyLoadedValue<>(repairIngredient);
 

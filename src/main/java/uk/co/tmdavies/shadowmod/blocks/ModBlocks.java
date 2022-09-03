@@ -20,7 +20,8 @@ import java.util.function.Supplier;
 
 public class ModBlocks {
 
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ModConstants.MOD_ID);
+    public static final DeferredRegister<Block> BLOCKS =
+            DeferredRegister.create(ForgeRegistries.BLOCKS, ModConstants.MOD_ID);
 
     // Ores
     public static final RegistryObject<Block> SHADOW_ORE = registerBlock("shadow_ore",

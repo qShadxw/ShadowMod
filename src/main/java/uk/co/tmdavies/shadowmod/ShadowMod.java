@@ -13,6 +13,8 @@ import uk.co.tmdavies.shadowmod.blocks.ModBlocks;
 import uk.co.tmdavies.shadowmod.events.PlayerListener;
 import uk.co.tmdavies.shadowmod.utils.ModConstants;
 import uk.co.tmdavies.shadowmod.items.ModItems;
+import uk.co.tmdavies.shadowmod.world.feature.ModConfiguredFeatures;
+import uk.co.tmdavies.shadowmod.world.feature.ModPlacedFeatures;
 
 @Mod(ModConstants.MOD_ID)
 public class ShadowMod {
@@ -25,17 +27,11 @@ public class ShadowMod {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
-
-        modEventBus.addListener(this::commonSetup);
+        ModConfiguredFeatures.register(modEventBus);
+        ModPlacedFeatures.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(new PlayerListener());
-
-    }
-
-    private void commonSetup(final FMLCommonSetupEvent event) {
-
-        LOGGER.info("ShadowMod is loading...");
 
     }
 
