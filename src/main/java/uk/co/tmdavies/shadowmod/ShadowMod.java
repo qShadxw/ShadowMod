@@ -10,6 +10,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import uk.co.tmdavies.shadowmod.blocks.ModBlocks;
+import uk.co.tmdavies.shadowmod.events.PlayerListener;
 import uk.co.tmdavies.shadowmod.utils.ModConstants;
 import uk.co.tmdavies.shadowmod.items.ModItems;
 
@@ -28,24 +29,13 @@ public class ShadowMod {
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(new PlayerListener());
 
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
 
         LOGGER.info("ShadowMod is loading...");
-
-    }
-
-    @Mod.EventBusSubscriber(modid = ModConstants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class ClientModEvents {
-
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-
-
-
-        }
 
     }
 
