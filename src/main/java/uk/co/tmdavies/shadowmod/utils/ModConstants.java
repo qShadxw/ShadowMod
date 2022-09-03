@@ -17,4 +17,8 @@ public class ModConstants {
         }
     };
 
+    // Generation
+    public static final int DEFAULT_GENERATION_FREQUENCY = 20;
+    public static final int DEBUG_GENERATION_FREQUENCY = 240;
+
 }

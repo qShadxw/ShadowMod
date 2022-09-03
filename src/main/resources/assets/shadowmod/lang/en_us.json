@@ -1,9 +1,14 @@
 {
   "itemGroup.shadowmod": "ShadowMod",
+
+  "_comment1": "Item Section",
   "item.shadowmod.shadow_ingot": "§7Shadow Ingot",
   "item.shadowmod.shadow_sword": "§7Shadow Sword",
   "item.shadowmod.shadow_pickaxe": "§7Shadow Pickaxe",
+
+  "_comment2": "Block Section",
   "block.shadowmod.shadow_ore": "§7Shadow Ore",
   "block.shadowmod.deepslate_shadow_ore": "§7Deepslate Shadow Ore",
-  "block.shadowmod.shadow_block": "§7Shadow Block"
+  "block.shadowmod.shadow_block": "§7Shadow Block",
+  "block.shadowmod.sun_ore": "§eSun Ore"
 }

@@ -32,6 +32,10 @@ public class ModBlocks {
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
                     .strength(7F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops()),
             ModConstants.SHADOWMOD_TAB);
+    public static final RegistryObject<Block> SUN_ORE = registerBlock("sun_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(7F).sound(SoundType.AMETHYST).requiresCorrectToolForDrops()),
+            ModConstants.SHADOWMOD_TAB);
 
     // Blocks
     public static final RegistryObject<Block> SHADOW_BLOCK = registerBlock("shadow_block",
