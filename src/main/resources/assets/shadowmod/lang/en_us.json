@@ -5,6 +5,8 @@
   "item.shadowmod.shadow_ingot": "§7Shadow Ingot",
   "item.shadowmod.shadow_sword": "§7Shadow Sword",
   "item.shadowmod.shadow_pickaxe": "§7Shadow Pickaxe",
+  "item.shadowmod.teleport_sword": "§3Teleport Sword",
+  "item.shadowmod.feather_boots": "Feather Boots",
 
   "_comment2": "Block Section",
   "block.shadowmod.shadow_ore": "§7Shadow Ore",
