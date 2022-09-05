@@ -21,4 +21,8 @@ public class ModConstants {
     public static final int DEFAULT_GENERATION_FREQUENCY = 20;
     public static final int DEBUG_GENERATION_FREQUENCY = 240;
 
+    // Mana
+    public static final int MAX_MANA = 100;
+    public static final int MIN_MANA = 0;
+
 }

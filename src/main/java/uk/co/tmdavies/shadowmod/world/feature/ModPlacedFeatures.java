@@ -17,7 +17,7 @@ public class ModPlacedFeatures {
 
     public static final RegistryObject<PlacedFeature> SHADOW_ORE_PLACED = PLACED_FEATURE.register("shadow_ore_placed",
             () -> new PlacedFeature(ModConfiguredFeatures.SHADOW_ORE.getHolder().get(),
-                    commonOrePlacement(20, // frequency
+                    commonOrePlacement(ModConstants.DEFAULT_GENERATION_FREQUENCY, // frequency
                             HeightRangePlacement.uniform(VerticalAnchor.absolute(-80), VerticalAnchor.absolute(55)))));
 
     // Utils

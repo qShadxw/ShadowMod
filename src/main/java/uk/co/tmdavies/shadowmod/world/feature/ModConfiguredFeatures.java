@@ -28,7 +28,7 @@ public class ModConfiguredFeatures {
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> SHADOW_ORE = CONFIGURED_FEATURES.register("shadow_ore",
             () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(Objects.requireNonNull(OVERWORLD_SHADOW_ORES.get()),
-                    ModConstants.DEFAULT_GENERATION_FREQUENCY))); // how many per vein
+                    3))); // how many per vein
 
     public static void register(IEventBus bus) {
 

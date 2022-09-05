@@ -1,35 +1,86 @@
 package uk.co.tmdavies.shadowmod.events;
 
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import uk.co.tmdavies.shadowmod.events.custom.ManaRegenerationEvent;
+import uk.co.tmdavies.shadowmod.networking.ModMessages;
+import uk.co.tmdavies.shadowmod.networking.PlayerManaDataSyncS2CPacket;
+import uk.co.tmdavies.shadowmod.player.attributes.PlayerMana;
+import uk.co.tmdavies.shadowmod.player.attributes.PlayerManaProvider;
+import uk.co.tmdavies.shadowmod.utils.ModConstants;
+
+@Mod.EventBusSubscriber(modid = ModConstants.MOD_ID)
 public class PlayerListener {
 
-    /*
+    @SubscribeEvent
+    public static void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
 
-    EXAMPLE CODE
+        event.register(PlayerMana.class);
 
-    Gets the world (level) and gets the block state of the given pos (location) then blocks the block object.
-    - event.getLevel().getBlockState(event.getPos()).getBlock()
+    }
 
-    Grabs the entity (player) that is triggering the event then grabs the item which is in its hand.
-    - event.getEntity().getItemInHand(event.getHand()).getItem()
+    @SubscribeEvent
+    public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
 
-    Grabs the world (level) and sets the block at the given position to a slime block and sends an update to the world.
-    - event.getLevel().setBlockAndUpdate(event.getPos(), Blocks.SLIME_BLOCK.defaultBlockState())
+        if (!(event.getObject() instanceof Player player)) return;
+        if (player.getCapability(PlayerManaProvider.PLAYER_MANA).isPresent()) return;
 
-     */
-//    @SubscribeEvent
-//    public void onPlayerInteract(PlayerInteractEvent event) {
-//
-//        if (event.getLevel().getBlockState(event.getPos()).getBlock() != Blocks.HAY_BLOCK) return;
-//        if (!event.getEntity().getItemInHand(event.getHand()).getItem().equals(ModItems.SHADOW_TEST.get())) return;
-//
-//        event.getLevel().setBlockAndUpdate(event.getPos(), Blocks.SLIME_BLOCK.defaultBlockState());
-//
-//        ResourceLocation resourceLocation = new ResourceLocation("minecraft", "block.grass.break");
-//        SoundEvent soundEvent = new SoundEvent(resourceLocation);
-//        BlockPos pos = event.getEntity().getOnPos();
-//
-//        event.getLevel().playSound(event.getEntity(), pos, soundEvent, SoundSource.PLAYERS, 1, 1);
-//
-//    }
+        event.addCapability(new ResourceLocation(ModConstants.MOD_ID, "properties"), new PlayerManaProvider());
+
+    }
+
+    @SubscribeEvent
+    public static void onPlayerClone(PlayerEvent.Clone event) {
+
+        if (event.isWasDeath()) {
+
+            // Old Player Object
+            event.getOriginal().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(oldStore -> {
+
+                // New Player Object
+                event.getEntity().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(newStore -> {
+
+                    newStore.copyFrom(oldStore);
+
+                });
+
+            });
+
+        }
+
+    }
+
+    @SubscribeEvent
+    public static void onManaRegeneration(ManaRegenerationEvent event) {
+
+        if (event.getPlayer() == null) return;
+
+        event.getPlayer().getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(mana -> {
+
+            mana.addMana(2);
+
+        });
+
+    }
+
+    @SubscribeEvent
+    public static void onPlayerJoinWorld(EntityJoinLevelEvent event) {
+
+        if (event.getLevel().isClientSide()) return;
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+
+        player.getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(mana -> {
+            ModMessages.sendToPlayer(new PlayerManaDataSyncS2CPacket(mana.getMana()), player);
+        });
+
+    }
 
 }

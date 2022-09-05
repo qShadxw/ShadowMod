@@ -30,7 +30,7 @@ public class ModItems {
             () -> new ShadowSword(ShadowTier.SHADOW_SWORD, 0,
                     getDefaultProperties()));
     public static final RegistryObject<Item> TELEPORT_SWORD = ITEMS.register("teleport_sword",
-            () -> new TeleportSword(ShadowTier.SHADOW_SWORD, 7.0f, 0,
+            () -> new TeleportSword(ShadowTier.SHADOW_SWORD, 7.0f, 2, 0,
                     getDefaultProperties()));
 
     // Tools
