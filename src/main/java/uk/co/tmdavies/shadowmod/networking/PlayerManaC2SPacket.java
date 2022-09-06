@@ -1,12 +1,10 @@
 package uk.co.tmdavies.shadowmod.networking;
 
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
 import uk.co.tmdavies.shadowmod.player.attributes.PlayerManaProvider;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.function.Supplier;
 
 public class PlayerManaC2SPacket {
@@ -35,6 +33,8 @@ public class PlayerManaC2SPacket {
             ServerPlayer player = context.getSender();
 
             player.getCapability(PlayerManaProvider.PLAYER_MANA).ifPresent(mana -> {
+
+                System.out.println("handle PlayerManaC2SPacket");
 
                 ModMessages.sendToPlayer(new PlayerManaDataSyncS2CPacket(mana.getMana()), player);
 

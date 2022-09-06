@@ -34,6 +34,7 @@ public class PlayerManaDataSyncS2CPacket {
 
         context.enqueueWork(() -> {
             // HERE WE ARE ON THE CLIENT!
+            System.out.println("handle PlayerManDataSyncS2CPacket");
             ClientPlayerManaData.set(mana);
         });
 

@@ -6,6 +6,8 @@ public class ClientPlayerManaData {
 
     public static void set(int mana) {
 
+        System.out.println("Set ClientPlayerManaData");
+
         ClientPlayerManaData.playerMana = mana;
 
     }

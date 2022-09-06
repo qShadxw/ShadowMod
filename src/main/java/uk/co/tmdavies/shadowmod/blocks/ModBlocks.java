@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -25,23 +26,19 @@ public class ModBlocks {
 
     // Ores
     public static final RegistryObject<Block> SHADOW_ORE = registerBlock("shadow_ore",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.METAL)
-                    .strength(6F).sound(SoundType.STONE).requiresCorrectToolForDrops()),
-            ModConstants.SHADOWMOD_TAB);
+            () -> new DropExperienceBlock(getDefaultProperties(Material.METAL)
+                    .strength(6F).sound(SoundType.STONE)), ModConstants.SHADOWMOD_TAB);
     public static final RegistryObject<Block> DEEPSLATE_SHADOW_ORE = registerBlock("deepslate_shadow_ore",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
-                    .strength(7F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops()),
-            ModConstants.SHADOWMOD_TAB);
+            () -> new DropExperienceBlock(getDefaultProperties(Material.HEAVY_METAL)
+                    .strength(7F).sound(SoundType.DEEPSLATE)), ModConstants.SHADOWMOD_TAB);
     public static final RegistryObject<Block> SUN_ORE = registerBlock("sun_ore",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.METAL)
-                    .strength(7F).sound(SoundType.AMETHYST).requiresCorrectToolForDrops()),
-            ModConstants.SHADOWMOD_TAB);
+            () -> new DropExperienceBlock(getDefaultProperties(Material.METAL)
+                    .strength(7F).sound(SoundType.AMETHYST)), ModConstants.SHADOWMOD_TAB);
 
     // Blocks
     public static final RegistryObject<Block> SHADOW_BLOCK = registerBlock("shadow_block",
-            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
-                    .strength(8F).sound(SoundType.METAL).requiresCorrectToolForDrops()),
-            ModConstants.SHADOWMOD_TAB);
+            () -> new Block(getDefaultProperties(Material.METAL)
+                    .strength(8F).sound(SoundType.METAL)), ModConstants.SHADOWMOD_TAB);
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
@@ -57,6 +54,12 @@ public class ModBlocks {
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block, CreativeModeTab tab) {
 
         return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
+
+    }
+
+    public static BlockBehaviour.Properties getDefaultProperties(Material material) {
+
+        return BlockBehaviour.Properties.of(material).requiresCorrectToolForDrops();
 
     }
 

@@ -2,7 +2,6 @@ package uk.co.tmdavies.shadowmod.items.custom.swords;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -12,8 +11,6 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-import uk.co.tmdavies.shadowmod.networking.ModMessages;
-import uk.co.tmdavies.shadowmod.networking.PlayerManaDataSyncS2CPacket;
 import uk.co.tmdavies.shadowmod.player.attributes.PlayerManaProvider;
 
 public class TeleportSword extends SwordItem {

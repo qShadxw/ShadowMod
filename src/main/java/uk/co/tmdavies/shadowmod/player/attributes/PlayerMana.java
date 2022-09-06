@@ -1,12 +1,13 @@
 package uk.co.tmdavies.shadowmod.player.attributes;
 
 import net.minecraft.nbt.CompoundTag;
+import uk.co.tmdavies.shadowmod.utils.ModConstants;
 
 public class PlayerMana {
 
     private int mana = this.MAX_MANA;
-    private final int MIN_MANA = 0;
-    private final int MAX_MANA = 100;
+    private final int MIN_MANA = ModConstants.MIN_MANA;
+    private final int MAX_MANA = ModConstants.MAX_MANA;
 
     public int getMana() {
 
@@ -31,7 +32,7 @@ public class PlayerMana {
 
         } else {
 
-            this.mana += Math.min(this.mana + amount, this.MAX_MANA);
+            this.mana += amount;
 
         }
 
@@ -45,7 +46,7 @@ public class PlayerMana {
 
         } else {
 
-            this.mana -= Math.max(this.mana - amount, this.MIN_MANA);
+            this.mana -= amount;
 
         }
 

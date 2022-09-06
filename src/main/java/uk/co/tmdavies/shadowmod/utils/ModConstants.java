@@ -10,7 +10,7 @@ public class ModConstants {
     public static final String MOD_ID = "shadowmod";
 
     // Tabs
-    public static final CreativeModeTab SHADOWMOD_TAB = new CreativeModeTab("shadowmod") {
+    public static final CreativeModeTab SHADOWMOD_TAB = new CreativeModeTab(MOD_ID) {
         @Override
         public ItemStack makeIcon() {
             return new ItemStack(ModItems.SHADOW_INGOT.get());
@@ -22,7 +22,7 @@ public class ModConstants {
     public static final int DEBUG_GENERATION_FREQUENCY = 240;
 
     // Mana
-    public static final int MAX_MANA = 100;
+    public static final int MAX_MANA = 10;
     public static final int MIN_MANA = 0;
 
 }
